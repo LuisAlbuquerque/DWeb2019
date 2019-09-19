@@ -126,6 +126,30 @@ ul#links a:link, a:visited {
   margin-left: 10px;
 }
 
+ul#menu{
+  list-style-type: none;
+  text-align: left;
+  }
+
+ul#menu a{
+  display:block;
+  float: left;
+  color: white;
+  text-align: left;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  font-family: 'Questrial', sans-serif;
+  line-height: 25px;
+  border-radius: 4px;
+
+
+  margin-top: 10px;
+
+  background-color: #ddd;
+  color: black;
+}
+
 ul#links a:hover, a:active {
   background-color: #ddd;
   color: black;
