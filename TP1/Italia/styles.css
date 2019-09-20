@@ -180,38 +180,38 @@ img:hover {
 }
 
 table { 
-border-spacing: 0;
-border-collapse: collapse;
+    border-spacing: 0;
+    border-collapse: collapse;
 }
 
 
 .overlay-image {
- position: relative;
- width: 100%;
+    position: relative;
+    width: 100%;
 }
 /* Original image */
 .overlay-image .image {
- display: block;
- width: 100%;
- height: auto;
+    display: block;
+    width: 100%;
+    height: auto;
 }
 
 /* Original text overlay */
 .overlay-image .text {
- color: #fff;
- font-size: 330%;
- font-family: 'Oswald', sans-serif;
- margin-right: 70px;
- padding-right: 70px;
- text-align: right;
- display:block;
- line-height: 1.5em;
- text-shadow: 2px 2px 2px #000;
- position: absolute;
- top: 50%;
- left: 50%;
- transform: translate(-50%, -50%);
- width: 100%;
+    color: #fff;
+    font-size: 330%;
+    font-family: 'Oswald', sans-serif;
+    margin-right: 70px;
+    padding-right: 70px;
+    text-align: right;
+    display:block;
+    line-height: 1.5em;
+    text-shadow: 2px 2px 2px #000;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
  }
 
  .card {
