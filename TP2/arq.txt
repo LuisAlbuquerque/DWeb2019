@@ -1,0 +1,4 @@
+//INDENTI[contains(../CONCEL,"Amares")]
+//CONCEL[contains(../TIPO/@ASSUNTO,"arqueossitio")]
+//DESCRI[contains(../TIPO/@ASSUNTO,"arqueossitio")and contains(../CONCEL,"Montalegre")]
+//DESARQ[contains(../TIPO/@ASSUNTO,"arqueossitio")and contains(../CONCEL,"Montalegre")]

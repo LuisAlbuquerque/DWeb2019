@@ -1,0 +1,47 @@
+<!ELEMENT ARQSITS (ARQELEMS)>
+<!ELEMENT ARQELEMS (ARQELEM*)>
+<!ELEMENT ARQELEM (TIPO,
+                   IDENTI,
+                   IMAGEM,
+                   DESCRI,
+                   LUGAR,
+                   FREGUE,
+                   CONCEL,
+                   CODADM,
+                   LATITU,
+                   LONGIT,
+                   ALTITU,
+                   ACESSO,
+                   QUADRO,
+                   DESARQ,
+                   INTERP,
+                   DEPOSI,
+                   BIBLIOs,
+                   AUTOR,
+                   DATA)>
+<!ELEMENT TIPO EMPTY >
+<!ATTLIST TIPO
+    ASSUNTO CDATA #REQUIRED >
+<!ELEMENT IDENTI (#PCDATA) >
+<!ELEMENT IMAGEM (#PCDATA) >
+<!ELEMENT DESCRI (#PCDATA) >
+<!ELEMENT LUGAR (#PCDATA) >
+<!ELEMENT FREGUE (#PCDATA) >
+<!ELEMENT CONCEL (#PCDATA) >
+<!ELEMENT CODADM (#PCDATA) >
+<!ELEMENT LATITU (#PCDATA) >
+<!ELEMENT LONGIT (#PCDATA) >
+<!ELEMENT ALTITU (#PCDATA) >
+<!ELEMENT ACESSO (#PCDATA) >
+<!ELEMENT QUADRO (#PCDATA) >
+<!ELEMENT DESARQ (#PCDATA | LIGAs) >
+<!ELEMENT LIGAs (LIGA*) >
+<!ELEMENT LIGA (#PCDATA) >
+<!ATTLIST LIGA 
+    TERMO CDATA #REQUIRED >
+<!ELEMENT INTERP (#PCDATA) >
+<!ELEMENT DEPOSI (#PCDATA) >
+<!ELEMENT BIBLIOs (BIBLIO+) >
+<!ELEMENT BIBLIO (#PCDATA) >
+<!ELEMENT AUTOR (#PCDATA) >
+<!ELEMENT DATA (#PCDATA) >
