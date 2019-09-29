@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT HTML (HEAD BODY)>
+<!ELEMENT HEAD (META*)>
+<!ATTLIST META 
+    http-equiv CDATA #IMPLIED
+    content CDATA #IMPLIED
+    name CDATA #IMPLIED>
+<!ELEMENT BODY (H1,
+                HR,
+                TABLE,
+                HR+,
+                H3,
+                OL,
+                HR,
+                H3,
+                P,
+                HR,
+                HR,
+                H3,
+                OL,
+                HR+,
+                H3,
+                (#PCDATA | P | I)+,
+                HR+,
+                H3,
+                UL,
+                #PCDATA,
+                HR,
+                P)>
+<!ELEMENT H1 (#PCDATA)>
+<!ATTLIST H1
+          align CDATA #IMPLIED>
+<!ELEMENT HR (#PCDATA)>
+<!ELEMENT TABLE (TBODY)>
+<!ELEMENT TBODY (TR*)>
+<!ELEMENT TR (TD*)>
+<!ELEMENT TD (B, (#PCDATA, FONT))>
+<!ATTLIST TD
+          width CDATA #IMPLIED>
+<!ELEMENT B (#PCDATA)>
+<!ELEMENT FONT (#PCDATA | A)>
+<!ELEMENT A (#PCDATA)>
+<!ATTLIST A
+          href CDATA #REQUIRED
+          target CDATA #IMPLIED>
+<!ELEMENT H3 (#PCDATA)>
+<!ELEMENT OL (LI*)>
+<!ELEMENT LI (#PCDATA | A)*>
+<!ELEMENT P (#PCDATA | I | B)*>
+<!ELEMENT UL (LI*)>

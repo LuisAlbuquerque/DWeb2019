@@ -1,47 +1,54 @@
-<!ELEMENT ARQSITS (ARQELEMS)>
-<!ELEMENT ARQELEMS (ARQELEM*)>
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT ARQSITS (ARQELEM*)>
+<!--ELEMENT ARQELEM (TIPO, IDENTI, IMAGEM?, DESCRI, CRONO?, LUGAR, FREGUE, CONCEL, CODADM?, LATITU?, ((LONGIT, ALTITU?) | (ALTITU,LONGIT?))?, ACESSO, QUADRO, TRAARQ?, DESARQ, INTERP, DESPOSI?, INTERE?, BIBLIO*, AUTOR, TRAAQ?, DATA)--> 
 <!ELEMENT ARQELEM (TIPO,
                    IDENTI,
-                   IMAGEM,
+                   IMAGEM?,
                    DESCRI,
+                   CRONO?,
                    LUGAR,
                    FREGUE,
                    CONCEL,
-                   CODADM,
-                   LATITU,
-                   LONGIT,
-                   ALTITU,
-                   ACESSO,
-                   QUADRO,
+                   CODADM?,
+                   LATITU?,
+                   ((LONGIT, ALTITU?) | (ALTITU, LONGIT?))?,
+                   ACESSO?,
+                   QUADRO?,
+                   TRAARQ?,
                    DESARQ,
-                   INTERP,
-                   DEPOSI,
-                   BIBLIOs,
+                   INTERP?,
+                   (INTERE | DEPOSI)*,
+                   BIBLIO*,
                    AUTOR,
-                   DATA)>
-<!ELEMENT TIPO EMPTY >
+                   TRAARQ?,
+                   DATA)> 
+<!ELEMENT TIPO (#PCDATA)>
 <!ATTLIST TIPO
     ASSUNTO CDATA #REQUIRED >
 <!ELEMENT IDENTI (#PCDATA) >
 <!ELEMENT IMAGEM (#PCDATA) >
-<!ELEMENT DESCRI (#PCDATA) >
-<!ELEMENT LUGAR (#PCDATA) >
-<!ELEMENT FREGUE (#PCDATA) >
+<!ATTLIST IMAGEM
+    NOME CDATA #REQUIRED >
+<!ELEMENT DESCRI (#PCDATA | LIGA)* >
+<!ELEMENT CRONO (#PCDATA) >
+<!ELEMENT LUGAR (#PCDATA | LIGA)* >
+<!ELEMENT FREGUE (#PCDATA | LIGA)* >
 <!ELEMENT CONCEL (#PCDATA) >
 <!ELEMENT CODADM (#PCDATA) >
 <!ELEMENT LATITU (#PCDATA) >
 <!ELEMENT LONGIT (#PCDATA) >
 <!ELEMENT ALTITU (#PCDATA) >
-<!ELEMENT ACESSO (#PCDATA) >
-<!ELEMENT QUADRO (#PCDATA) >
-<!ELEMENT DESARQ (#PCDATA | LIGAs) >
-<!ELEMENT LIGAs (LIGA*) >
+<!ELEMENT ACESSO (#PCDATA | LIGA)* >
+<!ELEMENT QUADRO (#PCDATA | LIGA)* >
+<!ELEMENT TRAARQ (#PCDATA | LIGA)* >
+<!ELEMENT DESARQ (#PCDATA | LIGA)* >
 <!ELEMENT LIGA (#PCDATA) >
 <!ATTLIST LIGA 
-    TERMO CDATA #REQUIRED >
-<!ELEMENT INTERP (#PCDATA) >
+    TERMO CDATA #IMPLIED>
+<!ELEMENT INTERP (#PCDATA | LIGA)* >
+<!ELEMENT DESPOSI (#PCDATA) >
+<!ELEMENT INTERE (#PCDATA | LIGA)* >
 <!ELEMENT DEPOSI (#PCDATA) >
-<!ELEMENT BIBLIOs (BIBLIO+) >
-<!ELEMENT BIBLIO (#PCDATA) >
+<!ELEMENT BIBLIO (#PCDATA | LIGA)* >
 <!ELEMENT AUTOR (#PCDATA) >
 <!ELEMENT DATA (#PCDATA) >
