@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="ARQSITS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="ARQELEM"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ARQELEM">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="TIPO"/>
+        <xs:element ref="IDENTI"/>
+        <xs:element minOccurs="0" ref="IMAGEM"/>
+        <xs:element ref="DESCRI"/>
+        <xs:element minOccurs="0" ref="CRONO"/>
+        <xs:element ref="LUGAR"/>
+        <xs:element ref="FREGUE"/>
+        <xs:element ref="CONCEL"/>
+        <xs:element minOccurs="0" ref="CODADM"/>
+        <xs:element minOccurs="0" ref="LATITU"/>
+        <xs:choice minOccurs="0">
+          <xs:sequence>
+            <xs:element ref="LONGIT"/>
+            <xs:element minOccurs="0" ref="ALTITU"/>
+          </xs:sequence>
+          <xs:sequence>
+            <xs:element ref="ALTITU"/>
+            <xs:element minOccurs="0" ref="LONGIT"/>
+          </xs:sequence>
+        </xs:choice>
+        <xs:element minOccurs="0" ref="ACESSO"/>
+        <xs:element minOccurs="0" ref="QUADRO"/>
+        <xs:element minOccurs="0" ref="TRAARQ"/>
+        <xs:element ref="DESARQ"/>
+        <xs:element minOccurs="0" ref="INTERP"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="INTERE"/>
+          <xs:element ref="DEPOSI"/>
+        </xs:choice>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="BIBLIO"/>
+        <xs:element ref="AUTOR"/>
+        <xs:element minOccurs="0" ref="TRAARQ"/>
+        <xs:element ref="DATA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TIPO">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="attlist.TIPO"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="attlist.TIPO">
+    <xs:attribute name="ASSUNTO" use="required"/>
+  </xs:attributeGroup>
+  <xs:element name="IDENTI" type="xs:string"/>
+  <xs:element name="IMAGEM">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="attlist.IMAGEM"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="attlist.IMAGEM">
+    <xs:attribute name="NOME" use="required"/>
+  </xs:attributeGroup>
+  <xs:element name="DESCRI">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="LIGA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CRONO" type="xs:string"/>
+  <xs:element name="LUGAR">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="LIGA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FREGUE">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="LIGA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CONCEL" type="xs:string"/>
+  <xs:element name="CODADM" type="xs:string"/>
+  <xs:element name="LATITU" type="xs:string"/>
+  <xs:element name="LONGIT" type="xs:string"/>
+  <xs:element name="ALTITU" type="xs:string"/>
+  <xs:element name="ACESSO">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="LIGA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="QUADRO">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="LIGA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TRAARQ">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="LIGA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DESARQ">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="LIGA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LIGA">
+    <xs:complexType mixed="true">
+      <xs:attributeGroup ref="attlist.LIGA"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:attributeGroup name="attlist.LIGA">
+    <xs:attribute name="TERMO"/>
+  </xs:attributeGroup>
+  <xs:element name="INTERP">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="LIGA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DESPOSI" type="xs:string"/>
+  <xs:element name="INTERE">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="LIGA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DEPOSI" type="xs:string"/>
+  <xs:element name="BIBLIO">
+    <xs:complexType mixed="true">
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="LIGA"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AUTOR" type="xs:string"/>
+  <xs:element name="DATA" type="xs:string"/>
+</xs:schema>

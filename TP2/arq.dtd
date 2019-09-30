@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!ELEMENT ARQSITS (ARQELEM*)>
-<!--ELEMENT ARQELEM (TIPO, IDENTI, IMAGEM?, DESCRI, CRONO?, LUGAR, FREGUE, CONCEL, CODADM?, LATITU?, ((LONGIT, ALTITU?) | (ALTITU,LONGIT?))?, ACESSO, QUADRO, TRAARQ?, DESARQ, INTERP, DESPOSI?, INTERE?, BIBLIO*, AUTOR, TRAAQ?, DATA)--> 
 <!ELEMENT ARQELEM (TIPO,
                    IDENTI,
                    IMAGEM?,
@@ -10,8 +9,8 @@
                    FREGUE,
                    CONCEL,
                    CODADM?,
-                   LATITU?,
-                   ((LONGIT, ALTITU?) | (ALTITU, LONGIT?))?,
+                   (LATITU,LONGIT)?,
+                   ALTITU?,
                    ACESSO?,
                    QUADRO?,
                    TRAARQ?,
