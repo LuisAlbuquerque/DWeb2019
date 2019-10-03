@@ -62,7 +62,7 @@ Minho, Braga, pp.65. </BIBLIO>
 		<CONCEL> Amares </CONCEL>
 		<CODADM> 030113 </CODADM>
 		<LATITU>517,4</LATITU>
-		<LONGIT>177</LONGIT>
+		\
 		<ALTITU> 65m </ALTITU>
 		<ACESSO>O acesso a este povoado faz-se a partir do lugar de Lago,
  por caminho carreteiro, que contorna os lados Oeste e Sul do
@@ -400,7 +400,7 @@ Minho, Braga, pp. 73. </BIBLIO>
 		<DESCRI>
 			<LIGA TERMO="povoado fortificado"> Povoado fortificado </LIGA>
 		</DESCRI>
-		<CRONO> Proto-História / Romanização</CRONO>
+		<CRONO></CRONO>
 		<LUGAR> Monte do Lousado</LUGAR>
 		<FREGUE> Alheira </FREGUE>
 		<CONCEL> Barcelos </CONCEL>
@@ -782,7 +782,7 @@ fortificado</LIGA>
 		<CONCEL> Póvoa de Lanhoso </CONCEL>
 		<CODADM> 030919 </CODADM>
 		<LATITU> 512,8 </LATITU>
-		<LONGIT> 187,6 </LONGIT>
+		<LONGIT></LONGIT>
 		<ACESSO>O acesso faz-se por estrada alcatroada, a partir da estrada Braga/Póvoa de
 Lanhoso. </ACESSO>
 		<QUADRO>O Monte do Castelo corresponde a um esporão, de altitude média, do maciço
@@ -1682,7 +1682,7 @@ A Idade do Bronze em Portugal. Discursos de Poder, Ed. S. E. C., pp. 60-61</BIBL
 Pedregais; Picos de Regalados; Portela das Cabras. </FREGUE>
 		<CONCEL> Vila Verde </CONCEL>
 		<CODADM> 031338 </CODADM>
-		<ALTITU> 496m </ALTITU>
+		<ALTITU></ALTITU>
 		<ACESSO> O acesso faz-se a partir da sede do concelho. </ACESSO>
 		<QUADRO>O maciço do Borrelho compreende a área situada entre os montes do Moínho
 Velho e o de S. Miguel-o-Anjo.
@@ -6061,7 +6061,7 @@ Madrid, 1988. </BIBLIO>
 		<CONCEL> Terras de Bouro </CONCEL>
 		<LATITU> 527,7 </LATITU>
 		<LONGIT> 191,4 </LONGIT>
-		<ALTITU> 992m </ALTITU>
+		<ALTITU>k</ALTITU>
 		<ACESSO>No cume do Piorneiro ou de Crasto, cerca de 1 km para Norte da aldeia de
 Seara. O acesso ao sítio do castelo é difícil e faz-se a pé (cerca de 30
 minutos), por caminho carreteiro e de pé posto que parte da aldeia de Seara
