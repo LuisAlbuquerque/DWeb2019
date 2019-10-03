@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT pr (metadata, workteam, abstract, deliverables?)>
+<!ELEMENT metadata (keydata, title, subtitle?, supervisor, bdate, edate)>
+<!ELEMENT keydata (#PCDATA) >
+<!ELEMENT title (#PCDATA) >
+<!ELEMENT subtitle? (#PCDATA) >
+<!ELEMENT supervisor (#PCDATA) >
+<!ATTLIST supervisor
+            homepage CDATA #REQUIRED>
+<!ELEMENT bdate (#PCDATA) >
+<!ELEMENT edate (#PCDATA) >
+<!ELEMENT supervisor (#PCDATA) >
+<!ELEMENT name (#PCDATA) >
+<!ELEMENT homepage (#PCDATA) >
+
+<!ELEMENT workteam (worker+) >
+<!ELEMENT worker (identifier,name,email,git?) >
+<!ELEMENT email (#PCDATA) >
+<!ELEMENT git (#PCDATA) >
+<!ELEMENT identifier (#PCDATA) >
+
+<!ELEMENT abstract (p+) >
+
+<!ELEMENT p (#PCDATA | b | i | u | xref)* >
+
+<!ELEMENT b (#PCDATA | i | u | xref)* >
+<!ELEMENT i (#PCDATA | i | b | xref)* >
+
+<!ELEMENT xref (#PCDATA) >
+<!ATTLIST xref
+            url CDATA #REQUIRED>
+
+<!ELEMENT deliverables (deliverable+) >
+<!ELEMENT deliverable (#PCDATA) >
+<!ATTLIST deliverable
+            path CDATA #REQUIRED>
+          
+
