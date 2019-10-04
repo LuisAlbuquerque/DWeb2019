@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>
+            TPC_3
+        </keyname>
+        <title>
+            Transformar XML em HTML usando XSLT
+        </title>
+        <supervisor homepage="http://www4.di.uminho.pt/~jcr/">
+            José Carlos Ramalho
+        </supervisor>
+        <bdate>
+            04-10-2019
+        </bdate>
+        <edate>
+            08-10-2019
+        </edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>
+                PG38015
+            </identifier>
+            <name>
+                Luís Albuquerque
+            </name>
+            <email>
+                lmiguelaa@gmail.com
+            </email>
+            <git>
+                https://github.com/LuisAlbuquerque
+            </git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p></p>
+    </abstract>
+    <deliverables>
+        <deliverable path="PR.html">
+            pr.html
+        </deliverable>
+        <deliverable path="arq.html">
+            Arq HTML
+        </deliverable>
+        <deliverable path="arq_web.xsl">
+            Arq gerar varios files (XSLT)
+        </deliverable>
+        <deliverable path="html/index.html">
+            Arq gerar varios files (HTML)
+        </deliverable>
+    </deliverables>
+</pr>

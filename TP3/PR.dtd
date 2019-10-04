@@ -3,13 +3,12 @@
 <!ELEMENT metadata (keydata, title, subtitle?, supervisor, bdate, edate)>
 <!ELEMENT keydata (#PCDATA) >
 <!ELEMENT title (#PCDATA) >
-<!ELEMENT subtitle? (#PCDATA) >
+<!ELEMENT subtitle (#PCDATA) >
 <!ELEMENT supervisor (#PCDATA) >
 <!ATTLIST supervisor
             homepage CDATA #REQUIRED>
 <!ELEMENT bdate (#PCDATA) >
 <!ELEMENT edate (#PCDATA) >
-<!ELEMENT supervisor (#PCDATA) >
 <!ELEMENT name (#PCDATA) >
 <!ELEMENT homepage (#PCDATA) >
 
