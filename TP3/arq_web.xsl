@@ -5,38 +5,51 @@
     version="2.0">
     
     <xsl:template match="/">
-        <xsl:result-document href ="html/index.html">
+        <xsl:result-document href ="web/index.html">
             
             <html>
                 <head>
                     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>       
                     <style> 
+                        body {
+                            background: #2F4F4F;
+                        }
                         table { 
-                        border-collapse: collapse; 
+                            border-collapse: collapse; 
                         } 
                         th { 
-                        //Color:white; 
                         } 
-                        th, td { 
-                        //text-align:center; 
-                        //border:1px solid black; 
-                        padding:15px 
+                        th, td {  
+                            padding:15px 
                         
                         } 
-                        .geeks { 
-                        border-right:hidden; 
-                        } 
-                        .gfg { 
-                        border-collapse:separate; 
-                        //border-spacing:0 15px; 
-                        } 
+                     
                         h1 { 
-                        color:green; 
+                            color: white; 
+                            text-align: center;
+                            font-size: 350%;
                         } 
+                        ol{
+                            padding: 20px;
+                            
+                        }
+                        
+                        ol li {
+                           padding: 5px;
+                           margin-left: 55px;
+                           color: white;
+                        }
+                        a:hover{
+                            background: #ffe5e5;
+                            color: black;
+                        }
+                        a {
+                            text-decoration: none;
+                        }
                     </style> 
                 </head>
                 <body>
-                    <h1> Arq </h1>
+                    <h1> Arqueossitios </h1>
                     <ol>
                         <xsl:apply-templates mode="indice"/>
                     </ol>
@@ -44,52 +57,63 @@
             </html>
             
         </xsl:result-document>
+        <xsl:apply-templates/>
     </xsl:template>
     
     <xsl:template match="ARQELEM" mode="indice">
         <li>
             <a name="{generate-id()}"/>
-            <a href="arq{generate-id()}.html">
+            <a href="arq-{generate-id()}.html">
                 <xsl:value-of select="IDENTI"/>
             </a>
         </li>
     </xsl:template>
     
     <xsl:template match="ARQELEM">
-        <xsl:result-document href ="html/arq{generate-id()}.html">
+        <xsl:result-document href ="web/arq-{generate-id()}.html">
             <html>
                 <head>
                     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"/>       
                     <style> 
                         table { 
-                        border-collapse: collapse; 
+                            border-collapse: collapse; 
                         } 
                         th { 
-                        //Color:white; 
                         } 
                         th, td { 
-                        //text-align:center; 
-                        //border:1px solid black; 
-                        padding:15px 
+                        
+                            padding:15px 
                         
                         } 
-                        .geeks { 
-                        border-right:hidden; 
-                        } 
-                        .gfg { 
-                        border-collapse:separate; 
-                        //border-spacing:0 15px; 
-                        } 
+                       
                         h1 { 
-                        color:green; 
+                            color:green; 
                         } 
+                        
+                        adress{
+                            margin-left: 20px;
+                            margin-top: 0px;
+                            margin-botton: 0px;
+                            display: block;
+                            
+                        }
+                        
+                        a {
+                            text-decoration: none;
+                        }
                     </style> 
                 </head>
                 <body>
-                    <!--div class="w3-card-4">
+                    <div class="w3-card-4">
                         <h1 align="center" class="w3-red">
                             <xsl:value-of select="IDENTI"/>
                         </h1>
+                        
+                        
+                        <adress>
+                            <a href="index.html#{generate-id()}">Voltar à pagina principal</a>
+                        </adress>
+                        <hr/>
                         
                         <table calss="w3-table w3-striped w3-bordered">
                             <tr class="w3-red">
@@ -239,7 +263,7 @@
                             
                             
                         </table>
-                    </div-->
+                    </div>
                 </body>
             </html>
             
