@@ -1,0 +1,12 @@
+[
+    {"nome" : "Ana",
+     "numero" : "A2423",
+     "curso" : "MMC",
+     "git" : "dwada.git.com"
+    },
+    {"nome" : "Paulinho",
+     "numero" : "A3423",
+     "curso" : "Miei",
+     "git" : "dwada.git.com"
+    }
+]
