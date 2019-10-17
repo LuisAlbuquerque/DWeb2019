@@ -75,7 +75,7 @@ var myServer = http.createServer((req,res) =>{
                                 }
                             })
                         }
-                    }
+                    })
                 });
             }
             break;
@@ -96,10 +96,10 @@ myServer.listen(5005, ()=>{
 
 function recuperaInfo(request,callbak){
     if(request.headers["content-type"] == "application/x-www-form-urlencoded"){
-        let body = ""
-        request.on("data",bloco = > {
+        let body = "";
+        request.on("data", bloco => {
             body += bloco.toString();
-        })
+        });
         request.on("end", () => {
             callbak(parse(body))
         })
