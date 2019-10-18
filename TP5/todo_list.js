@@ -19,6 +19,11 @@ var write_header = (res) =>
         "Content-Type" : "text/html; charset=utf-8"
     });
 
+var write_header_css = (res) =>
+    res.writeHead(200,{
+        "Content-Type" : "text/css"
+    });
+
 
 var send_init_page = (res) => {
     write_header(res);
@@ -47,7 +52,7 @@ var pug_write_error = (res) =>
 
 
 var send_style_page = (res) => {
-    write_header(res);
+    write_header_css(res);
     fs.readFile("stylesheets/w3.css", (erro,dados) => {
         if(!erro){
             res.write(dados);
@@ -82,10 +87,16 @@ var myServer = http.createServer((req,res) =>{
                     jsonfile.readFile(myBD,(erro,tasks) => {
                         if(!erro){
                             tasks.push(resultado);
-                            jsonfile.writeFile(myBD,alunos,erro =>{
-                                if(erro){ console.log(erro); }
+                            jsonfile.writeFile(myBD,tasks,erro =>{
+                                if(erro){
+                                    console.log(erro);
+                                    send_page_error(res);
+                                    res.end();
+                                }
                                 else{
                                     console.log("Tarefa adicionada com sucesso");
+                                    res.write(pug.renderFile('index.pug', {Tasks: tasks}));
+                                    res.end();
                                 }
                             })
                         }
