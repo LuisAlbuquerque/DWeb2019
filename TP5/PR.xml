@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>
+            TPC_5
+        </keyname>
+        <title>
+            Criar uma lista de tarefas
+        </title>
+        <supervisor homepage="http://www4.di.uminho.pt/~jcr/">
+            José Carlos Ramalho
+        </supervisor>
+        <bdate>
+            15-10-2019
+        </bdate>
+        <edate>
+            19-10-2019
+        </edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>
+                PG38015
+            </identifier>
+            <name>
+                Luís Albuquerque
+            </name>
+            <email>
+                lmiguelaa@gmail.com
+            </email>
+            <git>
+                https://github.com/LuisAlbuquerque
+            </git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>Neste trabalho construimos uma todo list, usando PUG, para criar templates 
+            de html e node js para criarmos o servidor.
+        </p>
+    </abstract>
+    <deliverables>
+        <deliverable path="todo_list.js">
+            todo_list.js
+        </deliverable>
+        <deliverable path="todo_list.js">
+            base de dados
+        </deliverable>
+        <deliverable path="layout.pug">
+            template generico
+        </deliverable>
+
+        <deliverable path="index.pug">
+            página do todo list
+        </deliverable>
+
+        <deliverable path="error.pug">
+            página de erro
+        </deliverable>
+    </deliverables>
+</pr>
