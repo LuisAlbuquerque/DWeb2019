@@ -23,6 +23,7 @@ block content
             h3 Tarefas
             .w3-container
                 table.w3-table-all
+                
                     tr
                         th feito
                         th Tarefa
@@ -31,8 +32,13 @@ block content
                         tr
                             td
                                 form.w3-container(action="/remove_task/" + t.task method="POST")
-                                    input(type='submit' checked=false)
+                                    input(value="remover" type='submit' checked=false)
                             td= t.task
                             td= t.dend
+
+            .w3-container
+                form.w3-container(action="/remove_all_tasks" method="POST")
+                    input(value="remover todas as tarefas" type='submit' checked=false)
+
             footer.w3-container.w3-teal
                 adress Gerado por LMAA

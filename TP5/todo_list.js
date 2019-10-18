@@ -103,7 +103,7 @@ var myServer = http.createServer((req,res) =>{
                     })
                 });
             }
-            else {
+            else if(purl.pathname.split("/")[1] == "remove_task"){
                 task_to_remove = (purl.pathname.split("/")[2]);    
                 task_to_remove = (task_to_remove.split("%20").join(" "));
 
@@ -142,6 +142,34 @@ var myServer = http.createServer((req,res) =>{
 
                     }   
                     });
+            }else {
+                print(purl.pathname)
+                if(purl.pathname == "/remove_all_tasks"){
+                    print("remove todas")
+
+
+                    jsonfile.readFile(myBD,(erro,tasks) => {
+                        if(!erro){
+                                tasks = tasks.filter(t => t == null);
+                            }
+                                jsonfile.writeFile(myBD,tasks,erro =>{
+                                    if(erro){
+                                        console.log(erro);
+                                        send_page_error(res);
+                                        res.end();
+                                    }
+                                    else{
+                                        console.log("Tarefa removida com sucesso");
+                                        res.write(pug.renderFile('index.pug', {Tasks: tasks}));
+                                        res.end();
+                                    }
+                                
+                                });
+
+                       
+                    });
+
+                }
             }
         
             break;
