@@ -104,8 +104,46 @@ var myServer = http.createServer((req,res) =>{
                 });
             }
             else {
-                print(purl.pathname)
+                task_to_remove = (purl.pathname.split("/")[2]);    
+                task_to_remove = (task_to_remove.split("%20").join(" "));
+
+                    jsonfile.readFile(myBD,(erro,tasks) => {
+                        if(!erro){
+                            print(tasks);
+                            r_i = -1;
+                            for(var i=0 in tasks){
+                                print(i)
+                                print(tasks[i])
+                                if(tasks[i]["task"] == task_to_remove){
+                                    //print(task_to_remove + " " + tasks[i])
+                                    r_i = i;
+                                    break;
+                                }
+                            }
+                            if(r_i != -1){
+                                delete tasks[r_i];
+                                tasks = tasks.filter(t => t != null);
+                            }
+                            print(task_to_remove);
+                            print(tasks);
+                                jsonfile.writeFile(myBD,tasks,erro =>{
+                                    if(erro){
+                                        console.log(erro);
+                                        send_page_error(res);
+                                        res.end();
+                                    }
+                                    else{
+                                        console.log("Tarefa removida com sucesso");
+                                        res.write(pug.renderFile('index.pug', {Tasks: tasks}));
+                                        res.end();
+                                    }
+                                
+                                });
+
+                    }   
+                    });
             }
+        
             break;
         default:
             write_header(res);

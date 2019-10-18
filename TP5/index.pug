@@ -24,10 +24,14 @@ block content
             .w3-container
                 table.w3-table-all
                     tr
+                        th feito
                         th Tarefa
                         th Data limite
                     each t in Tasks
                         tr
+                            td
+                                form.w3-container(action="/remove_task/" + t.task method="POST")
+                                    input(type='submit' checked=false)
                             td= t.task
                             td= t.dend
             footer.w3-container.w3-teal
