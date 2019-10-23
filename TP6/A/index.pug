@@ -1,0 +1,29 @@
+extends layout 
+block content
+    .w3-container
+        .w3-card-4
+            header.w3-container.w3-teal
+                h3 Gestao Alunos
+            .w3-container
+                ul.w3-ul
+                    li 
+                        a(href="/registar") registo de um aluno
+                    li
+                        a(href="/listar") pagina com a lista dos alunos
+
+            .w3-container
+                table.w3-table-all
+                    tr
+                        th Nome
+                        th Número / Identificador
+                        th Curso
+                        th Link para o Git
+                    each a in lista
+                        tr
+                            td=a.nome
+                            td=a.numero
+                            td=a.curso
+                            td
+                                button.w3-button.w3-circle.w3-blue-grey(onclick="apagarItem('" + a.identificador + "')")
+            footer.w3-container.w3-teal
+                adress Gerado por Gestão de Alunos App

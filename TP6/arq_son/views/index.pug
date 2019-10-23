@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h1 Arquivo Sonoro
+  each value, key in dict
+    h2=key 
+    ul.w3-ul
+    each t in value
+      button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="get_info('" +t+ "')")= t
+    
