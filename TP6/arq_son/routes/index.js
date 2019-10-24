@@ -7,6 +7,13 @@ myBD = "arq-son-EVO.json";
 var print = (string) => console.log(string);
 
  
+router.get('/add', (req, res, next) => {
+  res.render("add_other");
+});
+
+router.get('/mudar', (req, res, next) => {
+  res.render("change");
+});
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -43,16 +50,20 @@ router.get('/', (req, res, next) => {
     //res.render('index', { title: 'Express' });
 });
 
-router.get('/Alvorada', (req, res, next) => {
+
+router.get('/:id', (req, res, next) => {
   print("Chegei Alvorada");
-  print(req.path)
+  print(req.params.id)
+  tit = (req.params.id)
+  //print(req.query.id)
+  
 
     jsonfile.readFile(myBD, (erro, ficheiro) => {
         if(!erro){
             print("Não deu erro ao ler o ficheiro") 
             //print(ficheiro)
-            print(ficheiro)
-            tit = "Alvorada";
+            //print(ficheiro)
+            //tit = "Alvorada";
      /*
     prov: 'Beira Baixa',
     local: 'Malpica do Tejo',
@@ -96,8 +107,61 @@ router.get('/Alvorada', (req, res, next) => {
 });
 
 router.delete("/:id", (req, res) => {
-  print("delete/" + id);
-  res.render("error");
+  print(req.params.id)
+  tit = (req.params.id)
+  //res.render("error");
+    jsonfile.readFile(myBD, (erro, ficheiro) => {
+        if(!erro){
+            print("Não deu erro ao ler o ficheiro") 
+            //print(ficheiro)
+            new_ficheiro = [];
+            ficheiro.forEach(element => {
+              if(element["tit"] != tit)
+                new_ficheiro.push(element);
+              else
+                print(element)
+            });
+        jsonfile.writeFile(myBD,new_ficheiro,erro =>{
+            if(erro){
+                console.log(erro);
+            }
+            else{
+                res.render('index', { dict: dict});
+
+                titulos = new Set();
+                prov = new Set();
+                new_ficheiro.forEach(element => {
+                  titulos.add(element["tit"]);
+                  prov.add(element["prov"]);
+                });
+                dict = {};
+                prov.forEach(p => dict[ p ] = [])
+                new_ficheiro.forEach(element => {
+                  dict[ element["prov"] ].push( element["tit"] );
+                  
+                });
+                prov = Array.from(prov).sort();
+                res.render('index', { dict: dict});
+            }
+        })
+            //titulos = new Set();
+            //prov = new Set();
+            //new_ficheiro.forEach(element => {
+            //  titulos.add(element["tit"]);
+            //  prov.add(element["prov"]);
+              
+           // });
+        //dict = {};
+        //prov.forEach(p => dict[ p ] = [])
+        //new_ficheiro.forEach(element => {
+        //  dict[ element["prov"] ].push( element["tit"] );
+        //  
+        //});
+        //    prov = Array.from(prov).sort();
+           // res.render('index', { dict: dict});
+        }else
+            print("Deu erro ao ler o ficheiro!!") 
+    });
 });
 
 module.exports = router;

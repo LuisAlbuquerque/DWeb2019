@@ -1,7 +1,10 @@
 extends layout
 
 block content
-  h1 Arquivo Sonoro
+  h1
+    b Arquivo Sonoro
+  div
+      button.w3-teal.w3-card.w3-button.w3-animate-zoom.w3-xlarge.w3-round-large(onclick ="add( )") Adicionar
   each value, key in dict
     h2=key 
     ul.w3-ul

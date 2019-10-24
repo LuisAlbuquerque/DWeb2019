@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1 
+    b Adicionar um novo arquivo
+  form.w3-container(action="/add_arq" method="POST")
+    .w3-container 
+        p.w3-xxlarge Titulo:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='Titulo')
+    .w3-container 
+        p.w3-xxlarge Provincia:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='Provincia')
+    .w3-container 
+        p.w3-xxlarge Local:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='Tipo de Ficheiro')
+    .w3-container 
+        p.w3-xxlarge Inst:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='Tipo de Ficheiro')
+    .w3-container 
+        p.w3-xxlarge Tipo de Ficheiro:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='Tipo de Ficheiro')
+    .w3-container 
+        p.w3-xxlarge Nome do Ficheiro:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='Tipo de Ficheiro')
+    .w3-container.w3-panel 
+        input.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge.w3-round-large(type='submit' value='adicionar') 

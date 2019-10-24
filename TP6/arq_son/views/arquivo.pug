@@ -1,20 +1,30 @@
 extends layout
 
 block content
-  h1= tit 
-    table.w3-table
+  h1
+    b= tit 
+    div
+        button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="home( )") Home
+        button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="remove_item('" +tit+ "')") Remove
+        button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="mudar()") Alterar
+    table.w3-table-all
         tr
             th.w3-xlarge Província
-            td.w3-card=prov
+            td.w3-card
+                p.w3-xlarge=prov
         tr
-            th Local
-            td.w3-card=local
+            th.w3-xlarge Local
+            td.w3-card
+                p.w3-xlarge=local
         tr
-            th inst
-            td.w3-card=inst 
+            th.w3-xlarge inst
+            td.w3-card
+                p.w3-xlarge=inst 
         tr
-            th Tipo de Ficheiro
-            td.w3-card=file_t
+            th.w3-xlarge Tipo de Ficheiro
+            td.w3-card
+                p.w3-xlarge=file_t
         tr
-            th Nome
-            td.w3-card=file_text 
+            th.w3-xlarge Nome
+            td.w3-card
+                p.w3-xlarge=file_text 
