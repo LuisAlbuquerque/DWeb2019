@@ -23,8 +23,8 @@ function home() {
         .catch(error => console.log(error))
 }
 
-function mudar() {
-    axios.get("/mudar" )
-        .then(response => window.location.assign('/mudar'))
+function mudar(title) {
+    axios.get("/mudar/" + title )
+        .then(response => window.location.assign('/mudar/' + title))
         .catch(error => console.log(error))
 }
