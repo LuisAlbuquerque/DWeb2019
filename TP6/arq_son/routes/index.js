@@ -108,57 +108,70 @@ router.post('/add_arq', (req, res, next) => {
     });
   });
 
-router.post('/change_arq/id:', (req, res, next) => {
+router.post('/change_arq/:id', (req, res, next) => {
+  print("chegei change arq");
   tit = (req.params.id);
   print(req.body);
-  //body_ = (req.body);
-  //new_arq = {
-  // tit : body_["Titulo"] ,
-  // prov : body_["Provincia"], 
-  // local : body_["Local"],
-  // inst : body_["Inst"], 
-  // file : { "@t" : body_["Tipo_f"] , "#text" : body_["Nome_f"]}, 
-  //};
+  body_ = (req.body);
+  new_arq = {
+   tit : body_["Titulo"] ,
+   prov : body_["Provincia"], 
+   local : body_["Local"],
+   inst : body_["Inst"], 
+   file : { "@t" : body_["Tipo_f"] , "#text" : body_["Nome_f"]}, 
+  };
 
-  //   /*
-  //  prov: 'Beira Baixa',
-  //  local: 'Malpica do Tejo',
-  //  tit: 'Moda da azeitona',
-  //  inst: 'zamburra; almofariz; pandeiro; garrafa com garfo',
-  //  file: { '@t': 'MP3', '#text': 'd1/evo098.mp3' },
-  //  */
+     /*
+    prov: 'Beira Baixa',
+    local: 'Malpica do Tejo',
+    tit: 'Moda da azeitona',
+    inst: 'zamburra; almofariz; pandeiro; garrafa com garfo',
+    file: { '@t': 'MP3', '#text': 'd1/evo098.mp3' },
+    */
+    var old_arq;
+    jsonfile.readFile(myBD, (erro, ficheiro) => {
+        if(!erro){
+            print("Não deu erro ao ler o ficheiro") 
+            //print(ficheiro)
+            new_ficheiro = [];
+            ficheiro.forEach(element => {
+              if(element["tit"] != tit)
+                new_ficheiro.push(element);
+              else{
+                print(element)
+                old_arq = element;
+              }
+            });
 
-  //  jsonfile.readFile(myBD, (erro, ficheiro) => {
-  //      if(!erro){
-  //          print("Não deu erro ao ler o ficheiro") 
-  //          //print(ficheiro)
-  //          new_ficheiro = [];
-  //          ficheiro.forEach(element => {
-  //            if(element["tit"] != tit)
-  //              new_ficheiro.push(element);
-  //            else{
-  //              print(element)
-  //              var old_arq = element;
-  //            }
-  //          });
+            print(new_arq["tit"])
+            print(new_arq["prov"])
+            print(new_arq["local"])
+            print(new_arq["file"]["@t"])
+            print(new_arq["file"]["#text"])
+            print("---")
+            print(old_arq["tit"])
+            print(old_arq["prov"])
+            print(old_arq["local"])
+            print(old_arq["file"]["@t"])
+            print(old_arq["file"]["#text"])
 
-  //          if( new_arq["tit"] = "" ) new_arq["tit"] = element["tit"] ;     
-  //          if( new_arq["prov"] = "" ) new_arq["prov"] = element["prov"] ;     
-  //          if( new_arq["local"] = "" ) new_arq["local"] = element["local"] ;     
-  //          if( new_arq["file"]["@t"] = "" ) new_arq["file"]["@t"]= element["file"]["@t"];     
-  //          if( new_arq["file"]["#text"] = "" ) new_arq["file"]["#text"]= element["file"]["#text"];     
+            if( new_arq["tit"] == "" ) new_arq["tit"] = old_arq["tit"] ;     
+            if( new_arq["prov"] == "" ) new_arq["prov"] = old_arq["prov"] ;     
+            if( new_arq["local"] == "" ) new_arq["local"] = old_arq["local"] ;     
+            if( new_arq["file"]["@t"] == "" ) new_arq["file"]["@t"]= old_arq["file"]["@t"];     
+            if( new_arq["file"]["#text"] == "" ) new_arq["file"]["#text"]= old_arq["file"]["#text"];     
 
-  //          new_ficheiro.push(new_arq);
-  //      jsonfile.writeFile(myBD,new_ficheiro,erro =>{
-  //          if(erro){
-  //              console.log(erro);
-  //          }
-  //          else{
-  //             render_index(res,new_ficheiro);
-  //          }
-  //      });
-  //  }
-  //  });
+            new_ficheiro.push(new_arq);
+        jsonfile.writeFile(myBD,new_ficheiro,erro =>{
+            if(erro){
+                console.log(erro);
+            }
+            else{
+               render_index(res,new_ficheiro);
+            }
+        });
+    }
+    });
 });
 
 /* GET home page. */
@@ -219,7 +232,6 @@ router.get('/:id', (req, res, next) => {
         }else
             print("Deu erro ao ler o ficheiro!!") 
     });
-  res.render('arquivo');
 
 });
 
