@@ -21,10 +21,31 @@ block content
             td.w3-card
                 p.w3-xlarge=inst 
         tr
-            th.w3-xlarge Tipo de Ficheiro
+            th.w3-xlarge Musico
             td.w3-card
-                p.w3-xlarge=file_t
+                p.w3-xlarge=musico
+        tr
+            th.w3-xlarge Tipo de ficheiro
+            td.w3-card
+                p.w3-xlarge=file_t 
         tr
             th.w3-xlarge Nome
             td.w3-card
                 p.w3-xlarge=file_text 
+        tr
+            th.w3-xlarge Duração
+            td.w3-card
+                p.w3-xlarge=duracao
+
+    h2 Obeservações:
+    table.w3-table-all
+        tr
+            th.w3-xlarge Text
+            td.w3-card
+                p.w3-xlarge=obs_t
+        each f in obs_files
+            each value , key in f
+                tr
+                    th.w3-xlarge= key
+                    td.w3-card
+                        p.w3-xlarge=value

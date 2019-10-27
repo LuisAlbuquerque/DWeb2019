@@ -1,8 +1,14 @@
 extends layout
-
 block content
   h1 
     b Adicionar um novo arquivo
+  script.
+    var n_files = 4;
+    function increment(){
+        n_files++;
+    }
+  - var n = 0;
+  button(onclick="increment()") adicionar ficheiro
   form.w3-container(action="/add_arq" method="POST")
     .w3-container 
         p.w3-xxlarge Titulo:
@@ -17,10 +23,27 @@ block content
         p.w3-xxlarge Inst:
         input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='Inst')
     .w3-container 
+        p.w3-xxlarge Musico:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='musico')
+    .w3-container 
         p.w3-xxlarge Tipo de Ficheiro:
         input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='Tipo_f')
     .w3-container 
         p.w3-xxlarge Nome do Ficheiro:
         input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='Nome_f')
+    .w3-container 
+        p.w3-xxlarge Duração
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='duracao')
+    h2 Oberservações:
+        .w3-container 
+            p.w3-xxlarge Observações (texto):
+            input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='obs_t')
+    ul
+    while n < n_files
+        .w3-container 
+            p.w3-xxlarge= "Nome do Ficheiro:"
+            input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='Nome_f')
+        li= n++
     .w3-container.w3-panel 
         input.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge.w3-round-large(type='submit' value='adicionar') 
+

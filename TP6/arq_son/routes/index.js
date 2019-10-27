@@ -29,7 +29,18 @@ function render_index(res,ficheiro){
 
     res.render('index', { dict: dict});
 }
-
+function arq(body_){
+  return {
+   tit : body_["Titulo"] ,
+   prov : body_["Provincia"], 
+   local : body_["Local"],
+   inst : body_["Inst"], 
+   file : { "@t" : body_["Tipo_f"] , "#text" : body_["Nome_f"]}, 
+   musico : body_["musico"],
+   duracao : body_["duracao"],
+   obs : body_["obs_t"]
+  };
+}
 
 router.get('/add', (req, res, next) => {
   res.render("add_other");
@@ -40,10 +51,13 @@ router.get('/mudar/:id', (req, res, next) => {
   var old_arq = {}
   var prov = "";
   var local = "";
+  var musico = "";
+  var duracao = "";
   var inst = "";
   var file_t = "";
   var file_text = "";
   jsonfile.readFile(myBD, (erro, ficheiro) => {
+    if(!erro){
     ficheiro.forEach(element => {
       if(element["tit"] == tit){
         old_arq = element;
@@ -51,6 +65,8 @@ router.get('/mudar/:id', (req, res, next) => {
         prov = old_arq["prov"];
         local = old_arq["local"];
         inst = old_arq["inst"];
+        musico = old_arq["musico"];
+        duracao = old_arq["duracao"];
         file_t = old_arq["file"]["@t"];
         file_text = old_arq["file"]["#text"];
       }
@@ -66,22 +82,22 @@ router.get('/mudar/:id', (req, res, next) => {
                         prov : prov,
                         local: local,
                         inst: inst,
+                        musico : musico,
+                        duracao : duracao,
+                        obs_t : obs_t,
                         file_t :file_t,
                         file_text :file_text });
-  });
-
+  }else{
+    res.render("error", {e : "Erro ao ler a base de Bados"});
+  }
+    });
+  
 });
 
 router.post('/add_arq', (req, res, next) => {
   print(req.body);
   body_ = (req.body);
-  new_arq = {
-   tit : body_["Titulo"] ,
-   prov : body_["Provincia"], 
-   local : body_["Local"],
-   inst : body_["Inst"], 
-   file : { "@t" : body_["Tipo_f"] , "#text" : body_["Nome_f"]}, 
-  };
+  new_arq = arq(body_);
 
      /*
     prov: 'Beira Baixa',
@@ -98,13 +114,14 @@ router.post('/add_arq', (req, res, next) => {
             ficheiro.push(new_arq);
         jsonfile.writeFile(myBD,ficheiro,erro =>{
             if(erro){
-                console.log(erro);
+              res.render("error", {e : "Erro ao escrever na Base de Dados"});
             }
             else{
                render_index(res,ficheiro);
             }
         });
     }
+    else{ res.render("error", {e : "Erro ao ler a Base de Dados"})}
     });
   });
 
@@ -113,13 +130,7 @@ router.post('/change_arq/:id', (req, res, next) => {
   tit = (req.params.id);
   print(req.body);
   body_ = (req.body);
-  new_arq = {
-   tit : body_["Titulo"] ,
-   prov : body_["Provincia"], 
-   local : body_["Local"],
-   inst : body_["Inst"], 
-   file : { "@t" : body_["Tipo_f"] , "#text" : body_["Nome_f"]}, 
-  };
+  new_arq = arq(body_);
 
      /*
     prov: 'Beira Baixa',
@@ -142,7 +153,7 @@ router.post('/change_arq/:id', (req, res, next) => {
                 old_arq = element;
               }
             });
-
+            /* DEBUG 
             print(new_arq["tit"])
             print(new_arq["prov"])
             print(new_arq["local"])
@@ -154,22 +165,29 @@ router.post('/change_arq/:id', (req, res, next) => {
             print(old_arq["local"])
             print(old_arq["file"]["@t"])
             print(old_arq["file"]["#text"])
+            */
 
             if( new_arq["tit"] == "" ) new_arq["tit"] = old_arq["tit"] ;     
             if( new_arq["prov"] == "" ) new_arq["prov"] = old_arq["prov"] ;     
             if( new_arq["local"] == "" ) new_arq["local"] = old_arq["local"] ;     
+            if( new_arq["inst"] == "" ) new_arq["inst"] = old_arq["inst"] ;     
             if( new_arq["file"]["@t"] == "" ) new_arq["file"]["@t"]= old_arq["file"]["@t"];     
             if( new_arq["file"]["#text"] == "" ) new_arq["file"]["#text"]= old_arq["file"]["#text"];     
+            if( new_arq["musico"] == "" ) new_arq["musico"] = old_arq["musico"];     
+            if( new_arq["duracao"] == "" ) new_arq["duracao"] = old_arq["duracao"];     
+            if( new_arq["obs"] == "" ) new_arq["obs"] = old_arq["obs"];     
 
             new_ficheiro.push(new_arq);
         jsonfile.writeFile(myBD,new_ficheiro,erro =>{
             if(erro){
-                console.log(erro);
+               res.render("error" , {e : "Erro ao escrever na Base de Dados"});
             }
             else{
                render_index(res,new_ficheiro);
             }
         });
+    }else{
+      res.render("error" , {e : "Erro ao ler a Base de Dados"});
     }
     });
 });
@@ -184,7 +202,7 @@ router.get('/', (req, res, next) => {
             //print(ficheiro)
             render_index(res,ficheiro);
         }else
-            print("Deu erro ao ler o ficheiro!!") 
+          res.render("error" , {e : "Erro ao ler a Base de Dados"});
     });
     //res.render('index', { title: 'Express' });
 });
@@ -211,6 +229,10 @@ router.get('/:id', (req, res, next) => {
             inst = "";
             file_t = "";
             file_text = "";
+            files = [];
+            musico = "";
+            duracao = "";
+            obs = {};
             ficheiro.forEach(element => {
               if(element["tit"] == tit){
                   prov = element["prov"];
@@ -218,19 +240,46 @@ router.get('/:id', (req, res, next) => {
                   inst = element["inst"];
                   file_t = element["file"]["@t"];
                   file_text = element["file"]["#text"];
+                  obs = element["obs"];
+                  print(element);
+                  if(obs != undefined){
+                  if(typeof obs == 'string'){
+                    obs_t = obs;
+                    obs_files = [];
+
+                  }else{
+                    obs_t = obs["#text"];
+                    obs_files = obs["file"];
+                    if(Array.isArray(obs_files)){
+                      obs_files = obs_files;
+                    }else{ obs_files = [ obs_files ]; }
+                }
+              }else{
+                obs_t = "";
+                obs_files = [];
+              }
+                  musico = element["musico"];
+                  duracao = element["duracao"];
               }
 
             });
           
+            //print(files)
             res.render('arquivo', { tit : tit,
                                     prov: prov,
                                     local : local,
                                     inst : inst,
+                                    musico : musico,
+                                    duracao : duracao,
                                     file_t : file_t,
-                                    file_text : file_text
+                                    file_text : file_text,
+                                    obs_t : obs_t,
+                                    obs_files : obs_files
                                   });
-        }else
-            print("Deu erro ao ler o ficheiro!!") 
+        }else{
+            print("Deu erro ao ler o ficheiro!!");
+            res.render("error", { e: "Erro ao ler a Base de Dados" });
+        }
     });
 
 });
@@ -253,6 +302,7 @@ router.delete("/:id", (req, res) => {
         jsonfile.writeFile(myBD,new_ficheiro,erro =>{
             if(erro){
                 console.log(erro);
+            res.render("error", {e : "Erro ao escrever na Base de Dados"});
             }
             else{
                render_index(res,new_ficheiro);
@@ -260,6 +310,7 @@ router.delete("/:id", (req, res) => {
         })
         }else
             print("Deu erro ao ler o ficheiro!!") 
+            res.render("error", {e : "Erro ao ler a Base de Dados"});
     });
 });
 
