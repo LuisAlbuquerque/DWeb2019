@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>
+            TPC_6
+        </keyname>
+        <title>
+            Aplicação de gestao de arquivos sonoros (CRUD)
+        </title>
+        <supervisor homepage="http://www4.di.uminho.pt/~jcr/">
+            José Carlos Ramalho
+        </supervisor>
+        <bdate>
+            22-10-2019
+        </bdate>
+        <edate>
+            27-10-2019
+        </edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>
+                PG38015
+            </identifier>
+            <name>
+                Luís Albuquerque
+            </name>
+            <email>
+                lmiguelaa@gmail.com
+            </email>
+            <git>
+                https://github.com/LuisAlbuquerque
+            </git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>
+            Esta aplicação teve como base o ficheiro de aruivos arq-son-EVO.xml,
+            mas foi convertido em JSON, para que seja mais facil a sua manipulação,
+            usando nodejs.
+            Depois foi construido um web site, onde é possivél listar os arquivos,
+            ver mais informações sobre um arquivo, apagar o arquivo, ou alterar, bem 
+            como adicionar um novo.
+        </p>
+    </abstract>
+    <deliverables>
+        <deliverable path="arq_son">
+            Pasta onde contém todo o conteúdo da aplicação.
+        </deliverable>
+    </deliverables>
+</pr>
