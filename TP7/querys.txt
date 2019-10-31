@@ -1,0 +1,11 @@
+
+* Listar os generos de filmes e indicar quantos há de cada um:
+    db.filmesDW.aggregate([{$unwind : "$genres"},{$group: {_id : "$genres", contador: {$sum:1}} }]).pretty()
+
+* Quais os titulos dos filmes do genero "Drama"
+    db.filmesDW.aggregate([{$unwind : "$genres"},{$group: {_id : "$genres", filmes: {$push:"$title"}} }, {$match : {_id : "Drama"}}, {$group : {_id : "$filmes"}}])
+
+* Que actores participaram em filmes do genero "Comedy"
+    db.filmesDW.aggregate([{$unwind : "$genres"},{$unwind : "$cast"},{$group: {_id : "$genres", atores: {$push:"$cast"}} }, {$match : {_id : "Comedy"}}, {$group : {_id : "$atores"}}])
+
+
