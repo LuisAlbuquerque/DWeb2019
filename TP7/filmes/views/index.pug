@@ -1,5 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Filmes
+  div
+    button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="home( )") Home
+    button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="add( )") Adicionar
+    button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="filter( )") Filtrar
+    //button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="comedia()") Comédia
+    //button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="drama()") Drama
+  form.w3-container(action="/title" method="POST")
+    .w3-container 
+      p.w3-xxlarge Titulo:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='title')
+  table
+    each movie in data
+      tr
+        button.w3-card.w3-button.w3-text-grey.w3-xlarge(onclick="get_by_id('"+movie["_id"] +"')")= movie["title"]

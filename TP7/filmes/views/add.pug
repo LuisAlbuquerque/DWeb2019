@@ -1,0 +1,22 @@
+extends layout
+block content
+  h1 
+    b Adicionar um novo Filme
+  form.w3-container(action="/filmes" method="POST")
+    .w3-container 
+        p.w3-xxlarge Titulo:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='title')
+    .w3-container 
+        p.w3-xxlarge Ano:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='year')
+    div(id="atores") 
+        p.w3-xxlarge Atores:
+        button.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(onclick="add_ator()") Adicionar um novo ator
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='cast')
+    div(id="generos") 
+        p.w3-xxlarge Generos:
+        button.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(onclick="add_genero()") Adicionar um novo Genero
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='genres')
+        
+    input.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge.w3-round-large(type='submit' value='adicionar' onclick="home()") 
+

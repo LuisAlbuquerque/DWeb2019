@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1 Filmes
+  div
+        button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="home( )") Home
+        button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="remove_movie('" +data["_id"]+ "')") Remove
+        button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="update('" +data["_id"]+ "')") Alterar
+  table.w3-table-all
+    tr
+      th Titulo
+      td
+        p.w3-xlarge= data["title"]
+    tr
+      th Ano
+      td
+        p.w3-xlarge= data["year"]
+    tr
+      th Generos
+      each gen in data["genres"]
+        td
+          p.w3-xlarge= gen
+    tr
+      th Atores
+      each ator in data["cast"]
+        td
+          p.w3-xlarge= ator
+      
+
