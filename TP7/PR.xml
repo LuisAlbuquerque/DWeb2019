@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>
+            TPC_7
+        </keyname>
+        <title>
+            Aplicação de gestao de Filmes (CRUD)
+        </title>
+        <supervisor homepage="http://www4.di.uminho.pt/~jcr/">
+            José Carlos Ramalho
+        </supervisor>
+        <bdate>
+            29-10-2019
+        </bdate>
+        <edate>
+            5-11-2019
+        </edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>
+                PG38015
+            </identifier>
+            <name>
+                Luís Albuquerque
+            </name>
+            <email>
+                lmiguelaa@gmail.com
+            </email>
+            <git>
+                https://github.com/LuisAlbuquerque
+            </git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>
+            Esta aplicação permite manipular toda a base de dados de filmes,
+            que se encontra em mongo. 
+            A aplicação permite listar os filmes, procurar por um padrão,
+            adicionar um novo, tal como alterar um existente, ou até mesmo apagar.
+        </p>
+    </abstract>
+    <deliverables>
+        <deliverable path="filmes">
+            Pasta onde contém todo o conteúdo da aplicação.
+        </deliverable>
+    </deliverables>
+</pr>

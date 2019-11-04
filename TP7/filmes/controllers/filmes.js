@@ -1,5 +1,7 @@
-var Filme = require('../models/filme');
+var FilmeModel = require('../models/filme');
 var mongoose = require('mongoose');
+
+API_DADOS = 0;
 
 var render = (res,dados) => res.jsonp( dados );
 var print = (string) => console.log(string);
@@ -78,4 +80,24 @@ var delete_filme = (res,id) => {
     if(err) render(res, {ok : -1});
     else render(res,{ ok : 1});
   });
+}
+
+module.exports = {
+    render,
+    print ,
+    render_page,
+    render_page_all,
+    render_page_movie,
+    render_page_add,
+    render_page_add_movie,
+    render_page_update,
+    render_page_update_movie,
+    findall,
+    find_by_id ,
+    find_and_update_by_id ,
+    find_by_title,
+    find_by_filter,
+    add_filme,
+    update_filme,
+    delete_filme 
 }
