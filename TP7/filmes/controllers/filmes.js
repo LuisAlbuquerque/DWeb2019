@@ -47,7 +47,30 @@ var find_by_title = (res,title_value) => {
 }
 
 var find_by_filter= (res,filter) => {
-  FilmeModel.find( { title: {$regex  : filter["title"]}, year :{ $gt : filter["year_gt"], $lt : filter["year_lt"]} }).exec(
+  tit = filter["title"];
+  year_lt = filter["year_lt"];
+  year_gt = filter["year_gt"];
+  cas = filter["cast"];
+  gen = filter["genres"];
+
+  var query = { title: {$regex  : filter["title"]},
+                year :{ $gte : filter["year_gt"], $lte : filter["year_lt"]},
+                cast : {$in : [filter["cast"]]},
+                genres : {$in : [filter["genres"]]}
+              };
+
+  print("--------------")
+  print(query);
+
+  if(filter["title"] == "") delete query.title;
+  if(filter["year_gt"] == "" || filter["year_lt"] == "") delete query.year;
+  if(filter["cast"] == "" || filter["cast"] == undefined) delete query.cast;
+  if(filter["genres"] == "") delete query.genres;
+
+  print("--------------")
+  print(query);
+
+  FilmeModel.find(query).exec(
     (err, filmes) => {
         if (err) print(err);
         else (API_DADOS) ? render(res,filmes) : render_page_all(res,filmes);

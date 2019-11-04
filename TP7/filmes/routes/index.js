@@ -64,6 +64,7 @@ router.get('/filter', (req, res, next) => {
 });
 
 router.post('/filter', (req, res, next) => {
+  Filmes.print(req.body);
   Filmes.find_by_filter(res,req.body);
 });
 
