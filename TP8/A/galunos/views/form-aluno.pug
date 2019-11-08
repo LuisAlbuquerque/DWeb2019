@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .w3-container
+    h1 Inserir um aluno
+    form.w3-container(action="/alunos" method="post")
+      label Identificador:
+      input.w3-input(type="text" name="_id")
+      label Nome:
+      input.w3-input(type="text" name="nome")
+      label Curso:
+      input.w3-input(type="text" name="curso")
+      input.w3-input(type="submit" name="Enviar")
+    adress
+      a(href="http://localhoast:3005/") HomePage
+

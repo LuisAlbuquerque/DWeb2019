@@ -1,0 +1,17 @@
+extends layout
+block content
+  h1 
+    b= TIT_PAGE
+  form.w3-container(action=POST_action method="POST")
+    each atribute in single_Atributes
+      .w3-container 
+          p.w3-xxlarge= atribute + ":"
+          input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name=atribute)
+    each atribute in multi_Atributes
+      div(id=atribute) 
+          p.w3-xxlarge= atribute + ":"
+          button.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(onclick="add('"+atribute+"')")= "Adicionar um novo/a" + atribute
+          input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name=atribute)
+        
+    input.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge.w3-round-large(type='submit' value='adicionar') 
+

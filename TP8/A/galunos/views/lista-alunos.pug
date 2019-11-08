@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  .w3-container
+    h1 Listar os alunos
+    table.w3-table-all
+      tr  
+        th Identificador
+        th Nome
+        th Curso
+        th Opepações
+      each aluno in lista
+        tr
+          td= aluno._id
+          td= aluno.nome
+          td= aluno.curso
+          td ...
+    adress
+      a(href="http://localhoast:3005/") HomePage
+
