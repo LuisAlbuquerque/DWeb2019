@@ -13,6 +13,15 @@ var api_get = (url) => (result) => {
     })
   }
 
+var api_post = (url) => (result) => (object) => {
+  axios.post("http://localhost:3000/api/" + url, object)
+    .then(dados => {
+      result(dados)
+    })
+    .catch(erro => {
+      res.render("erro", {error : erro});
+    })
+  }
 var api_put = (url) => (result) => (object) => {
   axios.put("http://localhost:3000/api/" + url, object)
     .then(dados => {
@@ -31,15 +40,19 @@ var render_page = (res,
                   object_Atributes) => (page) => 
                             res.render(page, {DATA : dados,
                                               TIT_PAGE : tit_page,
+                                              POST_action : "/premios",
+                                              PUT_action : "/premios",
                                               single_Atributes : single_Atributes,
                                               multi_Atributes : multi_Atributes,
                                               object_Atributes : object_Atributes} );
 
 
 var render_page_index = (res,dados,tit_page,id,atribute) => render_page(res,dados,tit_page,id,atribute,[]) ("index");
+var render_page_index_special = (res,dados,tit_page,id,atribute) => render_page(res,dados,tit_page,id,atribute,[]) ("index_special");
 var render_page_one = (res,dados,tit_page,sA,mA,oA) => render_page(res,dados,tit_page,sA,mA,oA) ("one");
+var render_page_one_special = (res,dados,tit_page,sA,mA,oA) => render_page(res,dados,tit_page,sA,mA,oA) ("one_special");
 
-var render_page_add = (res,dados,tit_page,sA,mA,oA) => render_page(res,dados,tit_page,sA,mA,oA) ("add");
+var render_page_add = (res,tit_page,sA,mA,oA) => render_page(res,[],tit_page,sA,mA,oA) ("add");
 var render_page_error = (res) => render_page(res,[],"",[],[],[]) ("error");
 
 var render_page_update = (res,dados,tit_page,sA,mA,oA) => render_page(res,dados,tit_page,oA) ("update");
@@ -51,38 +64,75 @@ var router = express.Router();
 router.get('/premios', (req, res, next) => {
   Filmes.print("Chegeou o get /");
 
-  api_get (req.url) (dados => render_page_index(res,dados.data, "Premios Nobel","_id","category"));
+  api_get (req.url) (dados => render_page_index_special(res,dados.data, "Premios Nobel","_id","category"));
   //api_get (req.url) (dados => console.log(dados.data));
 });
 
 /* Filme by id */
 router.get('/premios/:id', (req, res, next) => {
   Filmes.print("Chegeou o get /:id");
-  api_get (req.url) (dados => render_page_one(res,dados.data, "Premio Nobel",["year","category"],[],["laureates"]));
+  api_get (req.url) (dados => render_page_one_special(res,dados.data, "Premio Nobel",["year","category"],["laureates"],[]));
   //api_get (req.url) (dados => console.log(dados.data));
 });
 
-/* Filme by title */
+/* Filme by title 
 router.post('/title', (req, res, next) => {
   Filmes.print("Chegeou o get title/");
   Filmes.find_by_title(res,req.body["title"]);
 });
+*/
 
-/* Add movie */
-router.post('/filmes', (req, res, next) => {
-  Filmes.print("Chegeou o post /filmes");
+/* Add */
+router.post('/premios', (req, res, next) => {
+  Filmes.print("Chegeou o post /premios");
   Filmes.print(req.body);
   body_ = (req.body);
-  Filmes.add_filme(res,body_);
+  var laureates_ = [];
+  if (Array.isArray(body_["firstname"])){
+    console.log("if");
+    for(let i=0; i < body_["firstname"].length; i++){
+      laureates_.push({ firstname : body_["firstname"][i],
+                      surname : body_["surname"][i],
+                      motivation : body_["motivation"][i],
+                      share : body_["share"][i]
+            });
+      console.log({ firstname : body_["firstname"][i],
+                            surname : body_["surname"][i],
+                            motivation : body_["motivation"][i],
+                            share : body_["share"][i]
+                  })
+    }
+    var object = {
+              year : body_["year"],
+              category : body_["category"],
+              laureates : laureates_
+            }
+  }else {
+    console.log("else");
+    var object = {
+              year : body_["year"],
+              category : body_["category"],
+              laureates : [{
+                         firstname : body_["firstname"],
+                         surname : body_["surname"],
+                         motivation : body_["motivation"],
+                         share : body_["share"],
+              }]
+            };
+  }
+  console.dir(object);
+  api_post (req.url) (dados => render_page_index_special(res,dados.data, "Premios Nobel","_id","category"));
+  //Filmes.add_filme(res,body_);
 });
 
-router.delete('/filmes/:id', (req, res, next) => {
-  Filmes.print("Chegeou o delete /filmes/:id");
+/* Delete */
+router.delete('/premios/:id', (req, res, next) => {
+  Filmes.print("Chegeou o delete /premios/:id");
   Filmes.delete_filme(res,req.params.id);
 });
 
-/* Update movie */
-router.put('/filmes/:id', (req, res, next) => {
+/* Update */
+router.put('/premios/:id', (req, res, next) => {
   Filmes.print("Chegeou o put /filmes/:id");
   Filmes.print(req.body);
   body_ = (req.body);
@@ -101,7 +151,8 @@ router.post('/update/:id', (req, res, next) => {
 });
 
 router.get('/add', (req, res, next) => {
-  res.render("add");
+  //res.render("add");
+  render_page_add(res,"Adicionar um premio nobel",["year","category"],["firstname","surname","motivation","share"],[])
 });
 
 router.get('/filter', (req, res, next) => {
@@ -115,7 +166,10 @@ router.post('/filter', (req, res, next) => {
 
 router.get('/update/:id', (req, res, next) => {
   Filmes.print("update id " + req.params.id)
-  Filmes.find_and_update_by_id(res,req.params.id);
+  render_page_add(res,"Adicionar um premio nobel",["year","category"],["firstname","surname","motivation","share"],[])
+  //render_page_update(res,[], "Premios Nobel (update)",["_id","category"],[],[]);
+                    //(res,dados,tit_page,sA,mA,oA)
+  //Filmes.find_and_update_by_id(res,req.params.id);
 });
 
 module.exports = router;

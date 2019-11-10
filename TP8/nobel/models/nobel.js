@@ -8,7 +8,7 @@ var laureatesSchema = new mongoose.Schema({
   });
 
 var filmeSchema = new mongoose.Schema({
-    year: Number,
+    year: String,
     category: String,
     laureates: [ laureatesSchema ],
   });

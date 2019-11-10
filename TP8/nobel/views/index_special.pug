@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= TIT_PAGE
+  div
+    button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="home( )") Home
+    button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="add_page( )") Adicionar
+    button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="filter( )") Filtrar
+  table
+    each atribute in DATA
+      tr
+        button.w3-card.w3-button.w3-text-grey.w3-xlarge(onclick="get_by_id('"+atribute[single_Atributes] +"')")= atribute[multi_Atributes] +" "+atribute["year"]

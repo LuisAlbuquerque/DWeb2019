@@ -1,25 +1,29 @@
+
+var page = "premios";
+
+
 function remove_movie(id){
     console.log('Vou tentar apagar o ' + id + ' ...')
-    axios.delete("/filmes/" + id)
-        .then(response => window.location.assign('/filmes'))
+    axios.delete("/"+page+"/" + id)
+        .then(response => window.location.assign('/'+page))
         .catch(error => console.log(error))
 }
 
 function get_by_id(id) {
-    axios.get("/filmes/" + id)
-        .then(response => window.location.assign('/filmes/' + id))
+    axios.get("/"+page+"/" + id)
+        .then(response => window.location.assign('/'+page+'/' + id))
         .catch(error => console.log(error))
 }
 
-function add() {
+function add_page() {
     axios.get("/add" )
         .then(response => window.location.assign('/add'))
         .catch(error => console.log(error))
 }
 
 function home() {
-    axios.get("/filmes" )
-        .then(response => window.location.assign('/filmes'))
+    axios.get("/"+page )
+        .then(response => window.location.assign('/'+page))
         .catch(error => console.log(error))
 }
 
@@ -40,6 +44,6 @@ function filter(){
 }
 function sendform(update_action,single_Atributes,multi_Atributes){
     axios.put(update_action)
-        .then(response => window.location.assign('/filmes'))
+        .then(response => window.location.assign('/'+page))
         .catch(error => console.log(error))
 }

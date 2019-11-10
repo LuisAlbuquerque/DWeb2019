@@ -19,7 +19,7 @@ var render_page_update_movie = (res,dados) => render_page(res,dados) ("update_mo
 var findall = (res) => {
   return NobelModel
         .find({},{year : 1, category : 1 })
-        .sort({category:1})
+        .sort({year:1,category:1})
         .exec();
 }
 
@@ -34,7 +34,7 @@ var find_by_laureates = (res) => {
   return NobelModel
             .aggregate([
                       {$unwind : "$laureates"},
-                      {$group : {_id : "$laureates", ano : {$first : "$year"},categoria : {$first : "$category"}}},
+                      {$group : {_id : "$laureates", ano : {$push: "$year"},categoria : {$push: "$category"}}},
                       {$project : {"_id" : { "firstname" : 1, "surname" : 1}, "ano" : 1, "categoria" : 1}}
                     ])
             .sort({_id:1})
@@ -48,8 +48,8 @@ var find_by_laureates = (res) => {
 var find_by_category_and_data = (res,categoria,data) => {
   return NobelModel
           .find(
-            {"category" : "medicine",
-             "year" : {$gt : 2016}})
+            {"category" : categoria,
+             "year" : {$gt : data}})
           .sort({category:1})
           .exec();
 }
