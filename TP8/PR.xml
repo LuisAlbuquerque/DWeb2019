@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>
+            TPC_8
+        </keyname>
+        <title>
+            Api de dados para os Prémios Nobel(CRUD)
+        </title>
+        <supervisor homepage="http://www4.di.uminho.pt/~jcr/">
+            José Carlos Ramalho
+        </supervisor>
+        <bdate>
+            5-11-2019
+        </bdate>
+        <edate>
+            12-11-2019
+        </edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>
+                PG38015
+            </identifier>
+            <name>
+                Luís Albuquerque
+            </name>
+            <email>
+                lmiguelaa@gmail.com
+            </email>
+            <git>
+                https://github.com/LuisAlbuquerque
+            </git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>
+            Esta aplicação responde a um conjunto de querys, devolvendo a respota
+            em formato Json.
+        </p>
+    </abstract>
+    <deliverables>
+        <deliverable path="nobel">
+            Pasta onde contém todo o conteúdo da aplicação.
+        </deliverable>
+    </deliverables>
+</pr>
