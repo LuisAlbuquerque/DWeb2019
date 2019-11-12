@@ -1,0 +1,25 @@
+extends layout
+block content
+  h1 
+    b Procurar um filme
+  form.w3-container(action="/filter" method="POST")
+    .w3-container 
+        p.w3-xxlarge Titulo:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='title')
+    .w3-container 
+        p.w3-xxlarge Escolher o limite inferior Ano:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='year_lt')
+    .w3-container 
+        p.w3-xxlarge Escolher o limite superior Ano:
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='year_gt')
+    div(id="atores") 
+        p.w3-xxlarge Atores:
+        button.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(onclick="add_ator()") Adicionar um novo ator
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='cast')
+    div(id="generos") 
+        p.w3-xxlarge Generos:
+        button.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(onclick="add_genero()") Adicionar um novo Genero
+        input.w3-input.w3-blue-grey.w3-xlarge.w3-animate-top.w3-round-large(type='text' name='genres')
+        
+    input.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge.w3-round-large(type='submit' value='procurar' onclick="home()") 
+
