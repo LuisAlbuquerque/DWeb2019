@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  h1= TIT_PAGE
+  div
+        button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="home( )") Home
+        button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="remove('" +DATA["_id"]+ "')") Remove
+        button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="update('" +DATA["_id"]+ "')") Alterar
+  table.w3-table-all
+    each atribute in single_Atributes
+      tr
+        th= atribute
+        td
+          p.w3-xlarge= DATA[atribute]
+    each atribute in multi_Atributes
+      tr
+        th= atribute
+        each a in DATA[atribute]
+          td
+            p.w3-xlarge= a
+    each atribute in object_Atributes
+      each value, key in DATA[atribute]
+        tr
+          th= key 
+          td
+            p.w3-xlarge= value
+
+      
+

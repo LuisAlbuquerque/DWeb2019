@@ -1,0 +1,37 @@
+extends layout
+
+block content
+  h1= TIT_PAGE
+  div
+        button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="home( )") Home
+  table.w3-table-all
+    each atribute in single_Atributes
+      tr
+        th= atribute
+        td
+          p.w3-xlarge= DATA[atribute]
+    each atribute in multi_Atributes
+      each object in DATA[atribute]
+        each value, key in object
+          tr
+            th= key
+            td
+              p.w3-xlarge= value
+    each atribute in object_Atributes
+      each value, key in DATA[atribute]
+        tr
+          th= key 
+          td
+            p.w3-xlarge= value
+//  h2 Tipologias
+//    each e in multi_Atributes[0]
+//      li.e
+//  h2 Dono
+//    each e in multi_Atributes[1]
+//      li.e
+//  h2 Participante
+//    each e in multi_Atributes[2]
+//      li.e
+
+      
+

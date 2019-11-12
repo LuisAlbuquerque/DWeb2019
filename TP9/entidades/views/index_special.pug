@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= TIT_PAGE
+  div
+    button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge(onclick ="home( )") Home
+    ul
+      each atribute in DATA
+          li.w3-card.w3-button.w3-text-grey.w3-xlarge(onclick="get_by_id('"+atribute[single_Atributes] +"')")= atribute["sigla"] +" "+atribute["designacao"]+" "+atribute["id"]+atribute["internacional"]
