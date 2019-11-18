@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>
+            TPC_9
+        </keyname>
+        <title>
+            Versão alternativa do mongo import
+        </title>
+        <supervisor homepage="http://www4.di.uminho.pt/~jcr/">
+            José Carlos Ramalho
+        </supervisor>
+        <bdate>
+            12-11-2019
+        </bdate>
+        <edate>
+            18-11-2019
+        </edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>
+                PG38015
+            </identifier>
+            <name>
+                Luís Albuquerque
+            </name>
+            <email>
+                lmiguelaa@gmail.com
+            </email>
+            <git>
+                https://github.com/LuisAlbuquerque
+            </git>
+        </worker>
+    </workteam>
+    <abstract>
+        <p>
+            Este comando, pertente substituir o comando mongoimport, que na sua essência,
+            importa o conteudo de um ficheiro json para uma certa base de dados.
+            Este comando permite fazer o mesmo, de forma façil, permitindo também ser usado 
+            com outros tipos de ficheiro, como XML e CSV.
+        </p>
+    </abstract>
+    <deliverables>
+        <deliverable path="myMongoImport">
+            Pasta onde contém todo o conteúdo da aplicação.
+        </deliverable>
+    </deliverables>
+</pr>
