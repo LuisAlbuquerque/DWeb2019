@@ -5,7 +5,7 @@
            Teste 
         </keyname>
         <title>
-            Versão alternativa do mongo import
+            Teste
         </title>
         <supervisor homepage="http://www4.di.uminho.pt/~jcr/">
             José Carlos Ramalho
@@ -50,7 +50,9 @@
         <h2> Interface </h2>
         <p>
             A Interface é simples, na pagina inical apresenta a lista de entidades com o seu respetivo id, sigla, designacao, e um botao para a pagina com mais informações.
-            
+            Na Pagina da entidade é apresentada a informacao base, lista de tipologias, processos em que é dona, e onde participa.
+            Onde aparece o id de uma tipologia, é redericionado para a pagina da tipologia
+            A pagina da tipologia é apresentada a informacao base, lista de entidades, processos em que é dona, e onde participa.
         </p>
         <h3> aquecimento </h3>
         <ul>
@@ -62,8 +64,11 @@
 
     </abstract>
     <deliverables>
-        <deliverable path="myMongoImport">
-            Pasta onde contém todo o conteúdo da aplicação.
+        <deliverable path="APIAPI">
+            Pasta para a API 
+        </deliverable>
+        <deliverable path="CLAV">
+            Pasta para a interface
         </deliverable>
     </deliverables>
 </pr>
