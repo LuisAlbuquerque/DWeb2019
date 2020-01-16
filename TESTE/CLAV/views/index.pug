@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Entidades
+  .w3-container.w3-card.w3-round-large
+    table.w3-table-all.w3-round-large
+      tr
+        th id
+        th sigla
+        th designacao
+        th pagina
+      each atribute in DATA
+        tr
+          td
+            p= atribute["id"]
+          td
+            p= atribute["sigla"]
+          td
+            p= atribute["designacao"]
+          td
+            button.w3-card.w3-button.w3-text-grey.w3-xlarge.w3-round-large(onclick="get_by_id('"+atribute["id"] +"')") pagina

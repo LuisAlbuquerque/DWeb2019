@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pr>
+    <metadata>
+        <keyname>
+           Teste 
+        </keyname>
+        <title>
+            Versão alternativa do mongo import
+        </title>
+        <supervisor homepage="http://www4.di.uminho.pt/~jcr/">
+            José Carlos Ramalho
+        </supervisor>
+        <bdate>
+            16-01-2020
+        </bdate>
+        <edate>
+            16-01-2020
+        </edate>
+    </metadata>
+    <workteam>
+        <worker>
+            <identifier>
+                PG38015
+            </identifier>
+            <name>
+                Luís Albuquerque
+            </name>
+            <email>
+                lmiguelaa@gmail.com
+            </email>
+            <git>
+                https://github.com/LuisAlbuquerque
+            </git>
+        </worker>
+    </workteam>
+    <abstract>
+        <h2> Api de dados </h2>
+        <p>
+            A presistência de dados foi feita em mongo.
+            Para isso transformei o ficheiro de xml em json, usando o site "https://www.freeformatter.com/xml-to-json-converter.html#ad-output"
+            onde no prefixo não coloquei nada.
+            Em seguida procedi ao tratamento dos dados em json, uma vez que não estavam padronizados.
+            Depois desse processo chegei ao estado que se encontra o ficheiro atual.
+
+            Para importar apenas tive que ligar a base de dados com o comando "sudo service mongod start"
+            E importar os dados usando o mongoimport, com o seguinte comando: " mongoimport --db TESTE --collection obras --file arquivo-musica-digital.json  --jsonArray".
+
+        </p>
+
+        <h2> Interface </h2>
+        <p>
+            A Interface é simples, na pagina inical apresenta a lista de entidades com o seu respetivo id, sigla, designacao, e um botao para a pagina com mais informações.
+            
+        </p>
+        <h3> aquecimento </h3>
+        <ul>
+            <li>Quantas Entidades estão catalogadas? : 546</li>
+            <li>A que Tipologias pertence a Entidade "Autoridade para as Condições de Trabalho" (ent_ACT) : tip_AP e tip_ASF</li>
+            <li>Em que processos a entidade "Autoridade Nacional de Segurança Rodoviária" (ent_ANSR) participa como Iniciador? : "codigo": "400.10.056", "titulo": "Registo nacional de condutores </li>
+            <li>De que processos é dona a entidade "Colégio Militar" : "codigo": "750.20.601", "titulo": "Realização de atividades de formação e treino animal"</li>
+        </ul>
+
+    </abstract>
+    <deliverables>
+        <deliverable path="myMongoImport">
+            Pasta onde contém todo o conteúdo da aplicação.
+        </deliverable>
+    </deliverables>
+</pr>

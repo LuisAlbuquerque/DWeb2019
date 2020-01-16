@@ -1,0 +1,70 @@
+extends layout
+
+block content
+  h1= "Tipologia : "+id 
+  button.w3-card.w3-button.w3-text-grey.w3-animate-zoom.w3-xlarge.w3-round-large(onclick ="home( )") Home
+  .w3-container.w3-card.w3-round-large
+    h2 Informação base
+    table.w3-table-all
+        tr
+          th estado 
+          td
+            p.w3-xlarge= DATA["estado"]
+        tr
+          th sigla
+          td
+            p.w3-xlarge= DATA["sigla"]
+        tr
+          th designação
+          td
+            p.w3-xlarge= DATA["designacao"]
+    h2 lista das entidades
+    table.w3-table-all
+      tr
+        th id
+        th sigla
+        th designação
+      each e in ELEMENTOS
+        tr
+          td
+            button(onclick="entidade('"+e["id"]+"')")= e["id"]
+          td
+            p.w3-xlarge= e["sigla"]
+          td
+            p.w3-xlarge= e["designacao"]
+        
+    h2 Processos em que é dona
+    table.w3-table-all
+      tr
+        th codigo
+        th titulo
+        th id
+      each e in DONOS
+        tr
+          td
+            p.w3-xlarge= e["codigo"]
+          td
+            p.w3-xlarge= e["titulo"]
+          td
+            p.w3-xlarge= e["id"]
+    h2 Processos em que participa
+    table.w3-table-all
+      tr
+        th Tipo par
+        th codigo
+        th titulo
+        th id
+      each e in PARTICIPANTE
+        tr
+          td
+            p.w3-xlarge= e["tipoPar"]
+          td
+            p.w3-xlarge= e["codigo"]
+          td
+            p.w3-xlarge= e["titulo"]
+          td
+            p.w3-xlarge= e["id"]
+
+
+      
+
